@@ -87,11 +87,11 @@ namespace Syntra.MVCAdvanced.Controllers
             //var locationVM = _mapper.Map<LocationDetailsVM>(locationsFromDb);
             //var teachersFromDb = await _teacherService.GetListAsync();
             //var teacherVM = _mapper.Map<TeacherDetailsVM>(teachersFromDb);
-            //if (TeacherID == null)
-              
-            //    ViewBag.Teachers = new SelectList(courseMV.Teachers.ToList(), "Id", "TeacherName");
-            //else
-            //    ViewBag.Teachers = new SelectList(courseMV.Teachers.ToList(), "Id", "TeacherName", TeacherID.Value);
+            if (TeacherID == null)
+
+                ViewBag.Teachers = new SelectList(courseMV.Teachers.ToList(), "Id", "TeacherName");
+            else
+                ViewBag.Teachers = new SelectList(courseMV.Teachers.ToList(), "Id", "TeacherName", TeacherID.Value);
 
             if (LocationID == null)
 
