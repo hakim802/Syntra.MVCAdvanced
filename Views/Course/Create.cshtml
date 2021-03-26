@@ -1,0 +1,72 @@
+﻿@model Syntra.MVCAdvanced.ViewModels.CourseDetailsVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Course</h1>
+
+@*<h4>Course</h4>*@
+@*<hr />*@
+@Html.ValidationSummary()
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateTime" class="control-label"></label>
+                    <input asp-for="DateTime" class="form-control" />
+                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Teacher" class="control-label"></label>
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.DropDownListFor(
+                                  x => x.TeacherId,
+                                  new SelectList(Model.Teachers, "Id", "TeacherName", Model.TeacherId),
+                                  "-- Select --")
+                                @Html.ValidationMessageFor(x => x.TeacherId)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Location" class="control-label"></label>
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.DropDownListFor(
+                                     x => x.LocationId,
+                                     new SelectList(Model.Locations, "Id", "Address", Model.LocationId),
+                                     "-- Select --"
+                                )
+                                @Html.ValidationMessageFor(x => x.LocationId)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

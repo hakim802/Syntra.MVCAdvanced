@@ -19,13 +19,13 @@ namespace Syntra.MVCAdvanced.DB
                 if (context.Teachers.Count() == 0)
                 {
                     var teacher1 = new Teacher();
-                    teacher1.FirstName = "TeacherFirstName1";
-                    teacher1.LastName = "TeacherLastName1";
+                    teacher1.FirstName = "Bjorn";
+                    teacher1.LastName = "Lecis";
                     teacher1.Salary = 1200;
                     var teacher2 = new Teacher();
-                    teacher2.FirstName = "TeacherFirstName2";
-                    teacher2.LastName = "TeacherLastName2";
-                    teacher2.Salary = 1000;
+                    teacher2.FirstName = "Maxim";
+                    teacher2.LastName = "Crabbé";
+                    teacher2.Salary = 1500;
                     context.Add(teacher1);
                     context.Add(teacher2);
                     context.SaveChanges();

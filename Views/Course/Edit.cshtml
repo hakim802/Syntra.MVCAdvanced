@@ -1,0 +1,60 @@
+﻿@model Syntra.Models.Course
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Course</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group">
+                @*<label asp-for="Teacher" class="control-label"></label>*@
+                @*@Html.LabelFor(model => model.TeacherId, "TeacherName")*@
+            </div>
+            <div class="editor-field">
+
+                @*@Html.DropDownListFor(model => model.TeacherId, ViewBag.Teachers as SelectList)*@
+
+                @*@Html.ValidationMessageFor(model => model.TeacherId)*@
+
+            </div>
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                @Html.LabelFor(model => model.LocationId, "Address")
+            </div>
+            <div class="editor-field">
+
+                @Html.DropDownList("LocationId", ViewBag.Locations as SelectList)
+
+                @Html.ValidationMessageFor(model => model.LocationId)
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -42,7 +42,7 @@ namespace Syntra.MVCAdvanced.Controllers
             {
                 var teacherToAdd = _mapper.Map<Teacher>(teacherVM); // maak van de vm een teacher object
                 var teacher = await _teacherService.CreateAsync(teacherToAdd); // geef het teacher object mee aan de create functie
-                var teacherVMToAdd = _mapper.Map<TeacherDetailsVM>(teacher); // map de gecreëerd teacher terug naar een VM
+                //var teacherVMToAdd = _mapper.Map<TeacherDetailsVM>(teacher); // map de gecreëerd teacher terug naar een VM
                 return RedirectToAction(nameof(Index)); //return View(teacherVMToReturn); // return de view  met de VM
             }
             return View(teacherVM); // De view was niet valid, maak opnieuw de view met de invalid teacherVM
@@ -93,8 +93,8 @@ namespace Syntra.MVCAdvanced.Controllers
             if (ModelState.IsValid) //is het valid?
             {
                 var teacherToUpdate = _mapper.Map<Teacher>(teacherVM);
-                var updatedTeacher = await _teacherService.UpdateAsync(teacherToUpdate); 
-                var teacherVMToReturn = _mapper.Map<TeacherDetailsVM>(updatedTeacher); 
+                var updatedTeacher = await _teacherService.UpdateAsync(teacherToUpdate);
+                //var teacherVMToReturn = _mapper.Map<TeacherDetailsVM>(updatedTeacher);
                 return RedirectToAction(nameof(Index)); 
             }
             return View(teacherVM); 

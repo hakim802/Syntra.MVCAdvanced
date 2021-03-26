@@ -1,17 +1,17 @@
-﻿@model Syntra.MVCAdvanced.ViewModels.TeacherDetailsVM
+﻿@model Syntra.MVCAdvanced.ViewModels.LocationDetailsVM
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>DanceSchool Teachers</h1>
+<h1>DanceSchool Locations</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form asp-controller="Teacher" asp-action="Index" method="get">
+<form asp-controller="Location" asp-action="Index" method="get">
     <p>
-        FirstName: <input type="text" asp-for=" SearchString" />
+        Street: <input type="text" asp-for=" SearchString" />
         <input type="submit" value="Filter" />
     </p>
 </form>
@@ -19,29 +19,29 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Teachers[0].FirstName)
+                @Html.DisplayNameFor(model => model.Locations[0].Street)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Teachers[0].LastName)
+                @Html.DisplayNameFor(model => model.Locations[0].StreetNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Teachers[0].Salary)
+                @Html.DisplayNameFor(model => model.Locations[0].City)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Teachers)
+        @foreach (var item in Model.Locations)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.DisplayFor(modelItem => item.Street)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
+                    @Html.DisplayFor(modelItem => item.StreetNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Salary)
+                    @Html.DisplayFor(modelItem => item.City)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
